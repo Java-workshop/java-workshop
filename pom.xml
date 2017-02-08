@@ -60,6 +60,7 @@
 
   <modules>
     <module>aspectJ</module>
+    <module>java8</module>
   </modules>
 
 </project>

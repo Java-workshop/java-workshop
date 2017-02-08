@@ -1,0 +1,5 @@
+annotations/LogInvocation.class
+annotations/LogInvocation$LogLevel.class
+aspects/LoggingAspect$1.class
+aspects/LoggingAspect.class
+test/TestClass.class
