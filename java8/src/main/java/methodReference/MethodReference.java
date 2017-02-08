@@ -9,6 +9,11 @@ import java.util.List;
 public class MethodReference {
 
     public static void main(String[] args) {
+        Converter<String, Integer> convertToInt = Integer::valueOf;
+        System.out.println(convertToInt.convert("123"));
+
+        List<String> strings = Arrays.asList("Hi", "Harry");
+        strings.forEach(s -> System.out.println(s+"1"));
 
     }
 }

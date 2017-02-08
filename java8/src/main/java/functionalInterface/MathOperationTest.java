@@ -9,20 +9,29 @@ import java.util.List;
 
 public class MathOperationTest {
 
-    class Addition implements MathOperation{
-        @Override
-        public int operate(int a, int b) {
-            return a+b;
-        }
-    }
+//    class Addition implements MathOperation{
+//        @Override
+//        public int operate(int a, int b) {
+//            return a+b;
+//        }
+//    }
 
     public static void main(String[] args) {
-        int a = 5, b = 6;
+         int a = 5, b = 6;
+//
+//        MathOperationTest mathOperationTest = new MathOperationTest();
+//        MathOperation mathOperation = mathOperationTest.new Addition();
+//
+//        System.out.println(mathOperation.operate(a, b));
 
-        MathOperationTest mathOperationTest = new MathOperationTest();
-        MathOperation mathOperation = mathOperationTest.new Addition();
+        MathOperation<Integer, Integer> addition = (Integer c, Integer d) ->{
+           return c+d ;
+        };
 
-        System.out.println(mathOperation.operate(a, b));
+        System.out.println(addition.operate(a, b));
+
+
+
     }
 
 

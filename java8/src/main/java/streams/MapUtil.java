@@ -51,6 +51,19 @@ public class MapUtil {
         }
     }
 
+    public static Optional<String> getQueryStringWithStream(Map<String, String> queryParams) {
+        if (queryParams == null || queryParams.size() < 1) {
+            return Optional.empty();
+        }
+
+        Set<String> keySet = queryParams.keySet();
+        Optional<String> reduce = keySet.stream()
+                .map(k -> k + "=" + queryParams.get(k))
+                .reduce((s1, s2) -> s1 + ";"+s2 );
+        return reduce;
+
+    }
+
     public static void main(String[] args) {
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("name", "fan");
@@ -60,10 +73,22 @@ public class MapUtil {
         System.out.println(MapUtil.getQueryStringWithFor(queryParams));
         System.out.println(MapUtil.getQueryStringWithIterator(queryParams));
 
+        Optional<String> queryStringWithStream = MapUtil.getQueryStringWithStream(queryParams);
+        System.out.println(queryStringWithStream.orElseThrow(RuntimeException::new));
 
         List<String> animals = Arrays.asList("dog", "duck", "pig", "cat", "mouse", "tiger");
+        animals.stream()
+                .filter(s -> s.startsWith("d"))
+                .map(s -> "I like " + s)
+                .reduce((s1, s2) -> s1 + ";" + s2);
 
         List<Integer> integers = Arrays.asList(1, 2, 4, 3, 12, 6, 5);
+
+        IntSummaryStatistics intSummaryStatistics = integers.stream()
+                .mapToInt(s -> s)
+                .summaryStatistics();
+        double average = intSummaryStatistics.getAverage();
+        System.out.println(average);
 
     }
 }
