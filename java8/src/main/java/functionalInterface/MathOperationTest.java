@@ -1,8 +1,5 @@
 package functionalInterface;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by fjiang on 2/6/17.
  */
@@ -24,11 +21,11 @@ public class MathOperationTest {
 //
 //        System.out.println(mathOperation.operate(a, b));
 
-        MathOperation<Integer, Integer> addition = (Integer c, Integer d) ->{
-           return c+d ;
+        MathOperation<Integer, Integer, Long> addition = (Integer c, Integer d, Long e) ->{
+           return c+d+e.intValue() ;
         };
 
-        System.out.println(addition.operate(a, b));
+        System.out.println(addition.operate(a, b, 5L));
 
 
 

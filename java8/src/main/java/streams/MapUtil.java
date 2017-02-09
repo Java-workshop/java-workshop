@@ -1,8 +1,13 @@
 package streams;
 
-import java.util.*;
-import java.util.concurrent.SynchronousQueue;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.IntSummaryStatistics;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Created by fjiang on 2/2/17.
@@ -60,6 +65,12 @@ public class MapUtil {
         Optional<String> reduce = keySet.stream()
                 .map(k -> k + "=" + queryParams.get(k))
                 .reduce((s1, s2) -> s1 + ";"+s2 );
+
+        //Alternative to concate the strings
+//        final String collect = keySet.stream()
+//            .map(k -> k + "=" + queryParams.get(k))
+//            .collect(Collectors.joining(";"));
+
         return reduce;
 
     }
