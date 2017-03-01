@@ -5,8 +5,4 @@ package com.fan.jiang.mockito.callback;
  */
 public interface Notifier {
     public void giveASignal();
-
-    default void sayHi() {
-        System.out.println("hi");
-    }
 }

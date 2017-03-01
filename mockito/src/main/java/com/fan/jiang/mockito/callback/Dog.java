@@ -8,8 +8,4 @@ public class Dog implements Notifier {
     public void giveASignal() {
         System.out.println("Wow!Wow!");
     }
-
-    public String welcome() {
-        return "wagging the tail!";
-    }
 }
