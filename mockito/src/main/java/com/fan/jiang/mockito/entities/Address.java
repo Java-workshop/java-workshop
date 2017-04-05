@@ -1,5 +1,8 @@
 package com.fan.jiang.mockito.entities;
 
+import com.fan.jiang.mockito.entities.exceptions.InvalidAddressException;
+import com.fan.jiang.mockito.entities.exceptions.InvalidStreetException;
+
 /**
  * Created by fjiang on 2/28/17.
  */
@@ -26,5 +29,23 @@ public class Address {
 
     public void setNumber(final String number) {
         this.number = number;
+    }
+
+    public void checkStreet() {
+        if (street.length() < 3) {
+            throw new InvalidStreetException("The StreetName is too short");
+        }
+    }
+
+    public void checkAddress() {
+        try {
+            checkStreet();
+        } catch (Exception ex) {
+            throw new InvalidAddressException("Address is invalid", ex);
+        }
+    }
+
+    public void sayHi() {
+        System.out.println("hi");
     }
 }
