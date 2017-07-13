@@ -2,7 +2,7 @@ package customTest.tests;
 
 import customTest.annotations.Test;
 
-public class PersonTest {
+public class UnitTest {
 
     @Test
     private void test1() {

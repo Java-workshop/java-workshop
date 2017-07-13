@@ -1,5 +1,6 @@
 package basics;
 
+import annotations.LogInvocation;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +32,8 @@ public class Person implements Serializable{
     public Person(final String name, final int age, ArrayList<String> nickNames) {
         this.name = name;
         this.age = age;
-        this.nickNames = (String[])nickNames.toArray();
+
+        this.nickNames = nickNames == null ? null :(String[])nickNames.toArray();
     }
 
     public String getName() {
@@ -48,6 +50,13 @@ public class Person implements Serializable{
 
     public void setAge(final int age) {
         this.age = age;
+    }
+
+    @LogInvocation(LogInvocation.LogLevel.DEBUG)
+    private void checkAge() {
+        if (age < 0) {
+            throw new RuntimeException("Age cannot be negative");
+        }
     }
 
     @Override
